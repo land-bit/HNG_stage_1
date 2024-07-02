@@ -6,15 +6,15 @@ const port = process.env.PORT || 3000;
 
 app.get("/api/hello", async (req, res) => {
   try {
-    res.send("hello");
-    //   const name = req.query.visitor_name;
+    const name = req.query.visitor_name;
 
-    //   const ip =
-    //     req.headers["cf-connecting-ip"] ||
-    //     req.headers["x-real-ip"] ||
-    //     req.headers["x-forwarded-for"] ||
-    //     req.socket.remoteAddress;
+    const ip =
+      req.headers["cf-connecting-ip"] ||
+      req.headers["x-real-ip"] ||
+      req.headers["x-forwarded-for"] ||
+      req.socket.remoteAddress;
 
+    res.json({ ip: ip, query: name });
     //   const visitor = name.slice(1, name.length - 1);
     //   const ipResponse = await fetch.get(`http://ip-api.com/json/${clientIp}`);
     //   const { city } = ipResponse.data || "new york";
