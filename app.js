@@ -23,7 +23,7 @@ app.get("/api/hello", async (req, res) => {
 
     const weatherApiKey = "cf629e31eb81927869a7c6bd77d70566";
 
-    const weatherApiResponse = await fetch.get(
+    const weatherApiResponse = await axios.get(
       `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${weatherApiKey}`
     );
     const temperature = weatherApiResponse.data.main.temp;
