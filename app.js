@@ -21,19 +21,18 @@ app.get("/api/hello", async (req, res) => {
 
     const { city } = ipResponse.data || "new york";
 
-    res.json({ ipResponse: ipResponse.data, visitor: visitor, city: city });
-    //   const weatherApiKey = "cf629e31eb81927869a7c6bd77d70566";
+    const weatherApiKey = "cf629e31eb81927869a7c6bd77d70566";
 
-    //   const weatherApiResponse = await fetch.get(
-    //     `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${weatherApiKey}`
-    //   );
-    //   const temperature = weatherApiResponse.data.main.temp;
+    const weatherApiResponse = await fetch.get(
+      `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${weatherApiKey}`
+    );
+    const temperature = weatherApiResponse.data.main.temp;
 
-    //   res.json({
-    //     client_ip: clientIp,
-    //     location: city,
-    //     greeting: `Hello, ${visitor} !, the temperature is ${temperature} degrees Celsius in ${city}`,
-    //   });
+    res.json({
+      client_ip: ip,
+      location: city,
+      greeting: `Hello, ${visitor} !, the temperature is ${temperature} degrees Celsius in ${city}`,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
