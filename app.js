@@ -6,30 +6,31 @@ const port = process.env.PORT || 3000;
 
 app.get("/api/hello", async (req, res) => {
   try {
-    const name = req.query.visitor_name;
+    res.send("hello");
+    //   const name = req.query.visitor_name;
 
-    const ip =
-      req.headers["cf-connecting-ip"] ||
-      req.headers["x-real-ip"] ||
-      req.headers["x-forwarded-for"] ||
-      req.socket.remoteAddress;
+    //   const ip =
+    //     req.headers["cf-connecting-ip"] ||
+    //     req.headers["x-real-ip"] ||
+    //     req.headers["x-forwarded-for"] ||
+    //     req.socket.remoteAddress;
 
-    const visitor = name.slice(1, name.length - 1);
-    const ipResponse = await fetch.get(`http://ip-api.com/json/${clientIp}`);
-    const { city } = ipResponse.data || "new york";
+    //   const visitor = name.slice(1, name.length - 1);
+    //   const ipResponse = await fetch.get(`http://ip-api.com/json/${clientIp}`);
+    //   const { city } = ipResponse.data || "new york";
 
-    const weatherApiKey = "cf629e31eb81927869a7c6bd77d70566";
+    //   const weatherApiKey = "cf629e31eb81927869a7c6bd77d70566";
 
-    const weatherApiResponse = await fetch.get(
-      `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${weatherApiKey}`
-    );
-    const temperature = weatherApiResponse.data.main.temp;
+    //   const weatherApiResponse = await fetch.get(
+    //     `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${weatherApiKey}`
+    //   );
+    //   const temperature = weatherApiResponse.data.main.temp;
 
-    res.json({
-      client_ip: clientIp,
-      location: city,
-      greeting: `Hello, ${visitor} !, the temperature is ${temperature} degrees Celsius in ${city}`,
-    });
+    //   res.json({
+    //     client_ip: clientIp,
+    //     location: city,
+    //     greeting: `Hello, ${visitor} !, the temperature is ${temperature} degrees Celsius in ${city}`,
+    //   });
   } catch {
     res.status(500).json({ error: error });
   }
