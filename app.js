@@ -1,8 +1,9 @@
+import axios from "axios";
 import express from "express";
 
 const app = express();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3001;
 
 app.get("/api/hello", async (req, res) => {
   try {
@@ -16,7 +17,7 @@ app.get("/api/hello", async (req, res) => {
 
     const visitor = name.slice(1, name.length - 1);
 
-    const ipResponse = await fetch.get(`http://ip-api.com/json/${clientIp}`);
+    const ipResponse = await axios.get(`http://ip-api.com/json/${clientIp}`);
 
     const { city } = ipResponse.data || "new york";
 
@@ -33,8 +34,8 @@ app.get("/api/hello", async (req, res) => {
     //     location: city,
     //     greeting: `Hello, ${visitor} !, the temperature is ${temperature} degrees Celsius in ${city}`,
     //   });
-  } catch {
-    res.status(500).json({ error: error });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 
