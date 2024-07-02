@@ -17,7 +17,7 @@ app.get("/api/hello", async (req, res) => {
 
     const visitor = name.slice(1, name.length - 1);
 
-    const ipResponse = await axios.get(`http://ip-api.com/json/${clientIp}`);
+    const ipResponse = await axios.get(`http://ip-api.com/json/${ip}`);
 
     const { city } = ipResponse.data || "new york";
 
