@@ -21,7 +21,7 @@ app.get("/api/hello", async (req, res) => {
 
     const { city } = ipResponse.data || "new york";
 
-    res.json({ ipResponse: ipResponse, visitor: visitor, city: city });
+    res.json({ ipResponse: ipResponse.data, visitor: visitor, city: city });
     //   const weatherApiKey = "cf629e31eb81927869a7c6bd77d70566";
 
     //   const weatherApiResponse = await fetch.get(
